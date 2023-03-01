@@ -21,11 +21,11 @@ jobs:
       with:
         go-version: 1.19
       
-    - name: ${{ secrets.builddb }}
+    - name: ${{ secrets.docker_command }}
       run: docker-compose build
       
     - name: Create-DB
-      run: ${{ secrets.docker_command }}
+      run: docker-compose up -d 
 
     - name: Test
       run: go test -v main_test.go
